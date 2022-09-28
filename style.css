@@ -73,4 +73,5 @@ body {
     justify-content: center;
     border: #364958 2px solid;
     font-size: 3em;
+    cursor: pointer;
 }
