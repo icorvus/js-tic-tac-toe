@@ -26,12 +26,22 @@ const gameBoard = (() => {
     const move_legal = (place, sign) => {
         if (board[place] === '') return true;
         return false;
-    }
+    };
 
     const get_board = () => {
         return [...board]
+    };
+
+    const is_game_over = sign => {
+        for (const combo of winningCombos) {
+            if (board[combo[0]] === sign && board[combo[1]] === sign && board[combo[2]] === sign) {
+                return true;
+            }
+        }
+        return false;
     }
-    return {update, get_board, fill}
+
+    return {update, get_board, fill, is_game_over}
 })();
 
 const player = (name, sign) => {
@@ -65,6 +75,9 @@ const displayController = (() => {
         gameBoard.update(event.target.dataset.index,
                          gameController.get_current_player_sign());
         gameBoard.fill();
+        console.log(gameBoard.get_board())
+        if (gameBoard.is_game_over('O')) alert('WIN')
+        console.log(gameBoard.get_board())
     };
     tileContainer.addEventListener('click', tileClick);
 })();
