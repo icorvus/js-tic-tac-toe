@@ -1,7 +1,7 @@
 const gameBoard = (() => {
     const winningCombos = [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6],
                            [1, 4, 7], [2, 5, 8], [0, 4, 8], [2, 4, 6]]
-    let board = ['', '', '', '', 'X', '', '', '', 'X'];
+    let board = ['', '', '', '', '', '', '', '', ''];
 
     const update = (place, sign) => {
         if (move_legal(place, sign)) {
@@ -50,23 +50,34 @@ const player = (name, sign) => {
 
 const gameController = (() => {
     let currentPlayer;
-    const play = () => {
-        console.log(gameBoard.get_board())
-        let board = gameBoard.get_board()
-        board[3] = 'XYO'
-        console.log(gameBoard.get_board())
-        console.log(board)
-        gameBoard.fill()
-        gameBoard.update(4, 'O')
-        gameBoard.fill()
-        const playerX = player('Arthur', 'X')
-        const playerO = player('Brandon', 'O')
-        currentPlayer = playerO;
+    let round = 1;
+    const playerX = player('Arthur', 'X');
+    const playerO = player('Brandon', 'O');
+
+    const next_round = () => {
+        if (gameBoard.is_game_over(currentPlayer.sign)) {
+            alert(`${currentPlayer.name} won! (${currentPlayer.sign} sign)`)
+        }
+        if (round > 8) alert('TIE!')
+        console.log(round)
+        round++;
+        if (round % 2) {
+            currentPlayer = playerX
+        } else {
+            currentPlayer = playerO
+        }
     };
+
+    const play = () => {
+        gameBoard.fill();
+        currentPlayer = playerX;
+    };
+
     const get_current_player_sign = () => {
         return currentPlayer.sign
     };
-    return {play, get_current_player_sign}
+
+    return {play, get_current_player_sign, next_round}
 })();
 
 const displayController = (() => {
@@ -75,8 +86,7 @@ const displayController = (() => {
         gameBoard.update(event.target.dataset.index,
                          gameController.get_current_player_sign());
         gameBoard.fill();
-        console.log(gameBoard.get_board())
-        if (gameBoard.is_game_over('O')) alert('WIN')
+        gameController.next_round();
         console.log(gameBoard.get_board())
     };
     tileContainer.addEventListener('click', tileClick);
