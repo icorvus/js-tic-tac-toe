@@ -51,8 +51,8 @@ const player = (name, sign) => {
 const gameController = (() => {
     let currentPlayer;
     let round = 1;
-    const playerX = player('Arthur', 'X');
-    const playerO = player('Brandon', 'O');
+    let playerX;
+    let playerO;
 
     const next_round = () => {
         if (gameBoard.is_game_over(currentPlayer.sign)) {
@@ -68,7 +68,9 @@ const gameController = (() => {
         }
     };
 
-    const play = () => {
+    const play = (player1, player2) => {
+        playerX = player(player1, 'X');
+        playerO = player(player2, 'O');
         gameBoard.fill();
         currentPlayer = playerX;
     };
@@ -77,11 +79,17 @@ const gameController = (() => {
         return currentPlayer.sign
     };
 
-    return {play, get_current_player_sign, next_round}
+    return {play, get_current_player_sign, next_round, playerO}
 })();
 
 const displayController = (() => {
     const tileContainer = document.querySelector('.tile-container');
+    const playBtn = document.querySelector('#play-btn');
+    const startScreen = document.querySelector('.start');
+    const tiles = document.querySelector('.tile-container')
+    const player1name = document.querySelector('#player1').value;
+    const player2name = document.querySelector('#player2').value;
+    
     const tileClick = event => {
         gameBoard.update(event.target.dataset.index,
                          gameController.get_current_player_sign());
@@ -89,7 +97,15 @@ const displayController = (() => {
         gameController.next_round();
         console.log(gameBoard.get_board())
     };
+
+    const playBtnClick = event => {
+        startScreen.classList.toggle('hidden');
+        tiles.classList.toggle('hidden');
+        gameController.play(player1name, player2name);
+    };
+
     tileContainer.addEventListener('click', tileClick);
+    playBtn.addEventListener('click', playBtnClick);
 })();
 
 gameController.play()

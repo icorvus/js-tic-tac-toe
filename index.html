@@ -14,16 +14,26 @@
             <h1>Tic-tac-toe</h1>
         </div>
         <div class="content">
-            <div class="tile-container">
-                <div class="tile">X</div>
-                <div class="tile"></div>
-                <div class="tile"></div>
-                <div class="tile"></div>
-                <div class="tile"></div>
-                <div class="tile">X</div>
-                <div class="tile">X</div>
-                <div class="tile">X</div>
-                <div class="tile">X</div>
+            <div class="tile-container hidden">
+                <p class="player-name">Jacob</p>
+                <p>Now it's your turn</p>
+            </div>
+            <div class="start">
+                <div>
+                    <p>Who is playing?</p>
+                    <p>Put your names below</p>
+                </div>
+                <div class="player-boxes">
+                    <div class="player-box">
+                        <label for="player1">Player 1</label>
+                        <input type="text" id="player1" name="player1" minlength="2" maxlength="25" required>
+                    </div>
+                    <div class="player-box">
+                        <label for="player2">Player 2</label>
+                        <input type="text" id="player2" name="player2">
+                    </div>
+                </div>
+                <button id="play-btn" class="btn">Play</button>
             </div>
         </div>
     </div>
