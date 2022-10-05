@@ -90,9 +90,9 @@ const displayController = (() => {
     const tileContainer = document.querySelector('.tile-container');
     const playBtn = document.querySelector('#play-btn');
     const resetBtn = document.querySelector('#reset-btn');
-    const startScreen = document.querySelector('.start');
+    const startElements = document.querySelectorAll('.start');
     const tiles = document.querySelector('.tile-container');
-    const info_container = document.querySelector('.info-container');
+    const game_info = document.querySelector('#game-info');
     const info_text = document.querySelector('.info');
 
     
@@ -106,9 +106,9 @@ const displayController = (() => {
     const playBtnClick = event => {
         const player1name = document.querySelector('#player1').value;
         const player2name = document.querySelector('#player2').value;
-        startScreen.classList.add('hidden');
+        startElements.forEach(element => element.classList.add('hidden'));
         tiles.classList.remove('hidden');
-        info_container.classList.remove('hidden');
+        game_info.classList.remove('hidden');
         gameController.play(player1name, player2name);
         tileContainer.classList.remove('disabled');
         info_text.textContent = 'Now it\'s your turn';

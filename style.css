@@ -63,7 +63,6 @@ body {
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(3, 1fr);
     border: #364958 2px solid;
-    margin-top: 10px;
     user-select: none;
     -webkit-user-select: none;
 }
@@ -77,11 +76,10 @@ body {
     cursor: pointer;
 }
 
-.start, .player-box {
+.player-box {
     display: flex;
     flex-direction: column;
     align-items: center;
-    font-size: 1.5rem;
 }
 
 .player-boxes {
@@ -90,7 +88,6 @@ body {
 }
 
 .btn {
-    font-size: 1.5rem;
     padding: 5px 30px ;
     background-color: #364958;
     color: #F1F2F6;
@@ -104,33 +101,43 @@ body {
     background-color: #496174;
 }
 
-.start {
-    margin-top: 20px;
-    gap: 30px;
-}
-
-.start p {
-    text-align: center;
-}
-
 .hidden {
     display: none;
 }
 
 .info-container {
     text-align: center;
-    font-size: 1.5rem;
     margin-top: 10px;
 }
 
-.info-container .player-name {
+.big-font {
     font-size: 2rem;
 }
 
-.info-container * {
+.mid-font {
+    font-size: 1.5rem;
+}
+
+.info-container *,
+.player-boxes,
+#play-btn,
+.player-box input[type='text'],
+.tile-container {
     margin-top: 10px;
 }
 
 .disabled {
     pointer-events: none;
+}
+
+.player-box input[type='text'] {
+    font-size: 1.2rem;
+    width: 15rem;
+    margin-top: 10px;
+}
+
+@media (max-width: 550px) {
+    :root {
+        font-size: 10px;
+    }
 }

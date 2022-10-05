@@ -14,30 +14,28 @@
             <h1>Tic-tac-toe</h1>
         </div>
         <div class="content">
-            <div class="info-container hidden">
-                <p class="player-name">Jacob</p>
+            <div id="game-info" class="info-container mid-font hidden">
+                <p class="player-name big-font"></p>
                 <p class="info">Now it's your turn</p>
-                <button id="reset-btn" class="reset btn">Reset</button>
+                <button id="reset-btn" class="reset btn mid-font">Reset</button>
                 <button id="reload" class="btn">Change players</button>
             </div>
             <div class="tile-container hidden">
             </div>
-            <div class="start">
-                <div>
-                    <p>Who is playing?</p>
-                    <p>Put your names below</p>
+            <div class="start info-container mid-font">
+                <p class="big-font">Who is playing?</p>
+                <p>Put your names below</p>
+            </div>
+            <button id="play-btn" class="start btn mid-font">Play</button>
+            <div class="start player-boxes">
+                <div class="player-box mid-font">
+                    <label for="player1">Player 1</label>
+                    <input type="text" id="player1" name="player1" minlength="2" maxlength="25" required>
                 </div>
-                <div class="player-boxes">
-                    <div class="player-box">
-                        <label for="player1">Player 1</label>
-                        <input type="text" id="player1" name="player1" minlength="2" maxlength="25" required>
-                    </div>
-                    <div class="player-box">
-                        <label for="player2">Player 2</label>
-                        <input type="text" id="player2" name="player2">
-                    </div>
+                <div class="player-box">
+                    <label for="player2">Player 2</label>
+                    <input type="text" id="player2" name="player2">
                 </div>
-                <button id="play-btn" class="btn">Play</button>
             </div>
         </div>
     </div>
