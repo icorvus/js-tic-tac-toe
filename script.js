@@ -92,8 +92,6 @@ const displayController = (() => {
     const resetBtn = document.querySelector('#reset-btn');
     const startScreen = document.querySelector('.start');
     const tiles = document.querySelector('.tile-container');
-    const player1name = document.querySelector('#player1').value;
-    const player2name = document.querySelector('#player2').value;
     const info_container = document.querySelector('.info-container');
     const info_text = document.querySelector('.info');
 
@@ -106,6 +104,8 @@ const displayController = (() => {
     };
 
     const playBtnClick = event => {
+        const player1name = document.querySelector('#player1').value;
+        const player2name = document.querySelector('#player2').value;
         startScreen.classList.add('hidden');
         tiles.classList.remove('hidden');
         info_container.classList.remove('hidden');
