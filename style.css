@@ -58,12 +58,14 @@ body {
 
 .tile-container {
     display: grid;
-    height: 500px;
-    width: 500px;
+    height:clamp(300px, 50vw, 500px);
+    width: clamp(300px, 50vw, 500px);
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(3, 1fr);
     border: #364958 2px solid;
-    margin-top: 100px;
+    margin-top: 10px;
+    user-select: none;
+    -webkit-user-select: none;
 }
 
 .tile {
@@ -103,7 +105,7 @@ body {
 }
 
 .start {
-    margin-top: 100px;
+    margin-top: 20px;
     gap: 30px;
 }
 
@@ -115,3 +117,20 @@ body {
     display: none;
 }
 
+.info-container {
+    text-align: center;
+    font-size: 1.5rem;
+    margin-top: 10px;
+}
+
+.info-container .player-name {
+    font-size: 2rem;
+}
+
+.info-container * {
+    margin-top: 10px;
+}
+
+.disabled {
+    pointer-events: none;
+}
